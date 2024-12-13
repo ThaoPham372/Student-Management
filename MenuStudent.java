@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuStudent {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        List<Student> studentList = new ArrayList<Student>();
         int choice;
     do {
         System.out.println("-----Student Management Menu-----");
@@ -13,7 +16,7 @@ public class MenuStudent {
         System.out.println("5. Exit");
         System.out.println("Enter your choice: ");
         choice = sc.nextInt();
-
+        sc.nextLine();
         switch (choice) {
             case 1:
                 System.out.println("Please Add Student!");
@@ -23,9 +26,14 @@ public class MenuStudent {
                 break;
             case 3:
                 System.out.println("Please Edit Student!");
+                System.out.println("Enter Student Name to Edit: ");
+                String oldName = sc.nextLine();
+                editStudent(oldName, studentList);
+
                 break;
             case 4:
                 System.out.println("Please Search Student By Name!");
+                searchStudentByName(studentList);
                 break;
             case 5:
                 System.out.println("Exit Program");
@@ -40,4 +48,50 @@ public class MenuStudent {
 
     }
 
-}
+    public static void editStudent (String oldName, List <Student> studentList) {
+        Scanner sc = new Scanner(System.in);
+
+
+        boolean isFound = false;
+        for (Student student : studentList) {
+            if (student.getName().equals(oldName)) {
+                isFound = true;
+
+                System.out.println("Enter Student New Name: ");
+                String newName = sc.nextLine();
+                student.setName(newName);
+
+                System.out.println("Edit Student Name Successfully : " + newName);
+                break;
+            }
+        }
+        if (!isFound) {
+            System.out.println("Student Not Found");
+        }
+    }
+
+    public static void searchStudentByName(List<Student> studentList){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Student Name to Search: ");
+        String name = sc.nextLine();
+
+        boolean isFound = false;
+        for (Student student : studentList) {
+            if (student.getName().equals(name)) {
+                System.out.println("Student Found");
+                System.out.println(student);
+                isFound = true;
+                break;
+            }
+        }
+        if (!isFound) {
+            System.out.println("Student Not Found");
+        }
+    }
+
+
+    }
+
+
+
+
