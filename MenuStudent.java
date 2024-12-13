@@ -35,7 +35,7 @@ public class MenuStudent {
                 break;
         }
 
-    }while (choice != 5);
+    } while (choice != 5);
 
 
     }
