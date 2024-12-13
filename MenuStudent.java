@@ -11,6 +11,7 @@ public class MenuStudent {
         System.out.println("3. Edit Student");
         System.out.println("4. Search Student By Name");
         System.out.println("5. Exit");
+        System.out.println("6- Print student information");
         System.out.println("Enter your choice: ");
         choice = sc.nextInt();
 
@@ -30,12 +31,17 @@ public class MenuStudent {
             case 5:
                 System.out.println("Exit Program");
                 break;
+            case 6:
+                System.out.println("Please Print student information");
             default:
                 System.out.println("Invalid choice");
                 break;
         }
 
     } while (choice != 5);
+
+
+
 
 
     }
