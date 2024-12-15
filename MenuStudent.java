@@ -13,6 +13,8 @@ public class MenuStudent {
 //        studentList.add(student2);
 //        studentList.add(student3);
         int choice;
+
+
         do {
             System.out.println("-----Student Management Menu-----");
             System.out.println("1. Add Student");
