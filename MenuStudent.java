@@ -7,6 +7,8 @@ public class MenuStudent {
         List<Student> studentList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         int choice;
+
+
         do {
             System.out.println("-----Student Management Menu-----");
             System.out.println("1. Add Student");
@@ -16,6 +18,7 @@ public class MenuStudent {
             System.out.println("5. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
+            sc.nextLine();
 
             switch (choice) {
                 case 1:
@@ -28,9 +31,13 @@ public class MenuStudent {
                     break;
                 case 3:
                     System.out.println("Please Edit Student!");
+                    System.out.print("Enter Student Name to Edit: ");
+                    String oldName = sc.nextLine();
+                    editStudent(oldName, studentList);
                     break;
                 case 4:
                     System.out.println("Please Search Student By Name!");
+                    searchStudentByName(studentList);
                     break;
                 case 5:
                     System.out.println("Exit Program");
@@ -41,8 +48,26 @@ public class MenuStudent {
             }
 
         } while (choice != 5);
+    }
 
+    public static void editStudent (String oldName, List <Student> studentList) {
+        Scanner sc = new Scanner(System.in);
+        boolean isFound = false;
+        for (Student student : studentList) {
+            if (student.getName().equals(oldName)) {
+                isFound = true;
 
+                System.out.println("Enter Student New Name: ");
+                String newName = sc.nextLine();
+                student.setName(newName);
+
+                System.out.println("Edit Student Name Successfully : " + newName);
+                break;
+            }
+        }
+        if (!isFound) {
+            System.out.println("Student Not Found");
+        }
     }
 
     /**
@@ -92,6 +117,29 @@ public class MenuStudent {
         }
         if (!isDeleteStudent) {
             System.out.println("No exit " + name + " on the list ");
+        }
+    }
+    /**
+     * Search Student by Name
+     *
+     * @param studentList List<Student>
+     */
+    public static void searchStudentByName(List<Student> studentList){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Student Name to Search: ");
+        String name = sc.nextLine();
+
+        boolean isFound = false;
+        for (Student student : studentList) {
+            if (student.getName().equals(name)) {
+                System.out.println("Student Found");
+                System.out.println(student);
+                isFound = true;
+                break;
+            }
+        }
+        if (!isFound) {
+            System.out.println("Student Not Found");
         }
     }
 }
