@@ -53,12 +53,7 @@ public class MenuStudent {
 
         } while (choice != 5);
     }
-    /**
-     * Edit Student by Name
-     *
-     * @param oldName String
-     * @param studentList List<Student>
-     */
+
     public static void editStudent (String oldName, List <Student> studentList) {
         Scanner sc = new Scanner(System.in);
         boolean isFound = false;
