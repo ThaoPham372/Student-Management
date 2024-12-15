@@ -15,7 +15,9 @@ public class MenuStudent {
             System.out.println("2. Delete Student");
             System.out.println("3. Edit Student");
             System.out.println("4. Search Student By Name");
-            System.out.println("5. Exit");
+            System.out.println("5. Show List Student");
+            System.out.println("6. Exit");
+
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             sc.nextLine();
@@ -40,14 +42,19 @@ public class MenuStudent {
                     searchStudentByName(studentList);
                     break;
                 case 5:
+                    System.out.println("Show List Student!");
+                    showList(studentList);
+                    break;
+                case 6:
                     System.out.println("Exit Program");
                     break;
+
                 default:
                     System.out.println("Invalid choice");
                     break;
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
     }
 
     public static void editStudent (String oldName, List <Student> studentList) {
@@ -142,4 +149,13 @@ public class MenuStudent {
             System.out.println("Student Not Found");
         }
     }
+    public static void showList (List<Student> studentList) {
+        int index = 1;
+        for (Student student : studentList) {
+            System.out.println(index + "/ " + student);
+            index ++;
+        }
+    }
+
+
 }
