@@ -150,8 +150,12 @@ public class MenuStudent {
         }
     }
     public static void showList (List<Student> studentList) {
+        int index = 1;
         for (Student student : studentList) {
-            System.out.println(student);
+            System.out.println(index + "/ " + student);
+            index ++;
         }
     }
+
+
 }
