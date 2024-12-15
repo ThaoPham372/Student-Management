@@ -4,14 +4,8 @@ import java.util.Scanner;
 
 public class MenuStudent {
     public static void main(String[] args) {
+        List<Student> studentList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        List<Student> studentList = new ArrayList<Student>();
-//        Student student1 = new Student("Thao", 12, "abc");
-//        Student student2 = new Student("Quang", 14, "def");
-//        Student student3 = new Student("Anh Nam", 18, "ert");
-//        studentList.add(student1);
-//        studentList.add(student2);
-//        studentList.add(student3);
         int choice;
 
 
@@ -29,9 +23,11 @@ public class MenuStudent {
             switch (choice) {
                 case 1:
                     System.out.println("Please Add Student!");
+                    addStudent(studentList);
                     break;
                 case 2:
                     System.out.println("Please Delete Student!");
+                    deleteStudent(studentList);
                     break;
                 case 3:
                     System.out.println("Please Edit Student!");
@@ -75,6 +71,55 @@ public class MenuStudent {
     }
 
     /**
+     * Ham nhap ten hoc sinh
+     *
+     * @param studentList List<Student>
+     */
+    public static void addStudent(List<Student> studentList) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter student name");
+        String name = sc.nextLine();
+
+        System.out.println("Enter student address");
+        String address = sc.nextLine();
+
+        System.out.println("Enter student age");
+        int age = sc.nextInt();
+        sc.nextLine();
+
+        Student student = new Student(name, age, address);
+        studentList.add(student);
+    }
+
+    /**
+     * Ham xoa ten hoc sinh bang chu
+     *
+     * @param studentList List<Student>
+     */
+    public static void deleteStudent(List<Student> studentList) {
+        Scanner sc = new Scanner(System.in);
+
+        for (Student num : studentList) {
+            System.out.println(num);
+        }
+        System.out.println("Enter student name you want to delete");
+        String name = sc.nextLine();
+        boolean isDeleteStudent = false;
+
+        for (Student num : studentList) {
+            if (num.getName().equals(name)) {
+                isDeleteStudent = true;
+                studentList.remove(num);
+                System.out.println("Deleted successfully student " + name);
+                break;
+            }
+        }
+        if (!isDeleteStudent) {
+            System.out.println("No exit " + name + " on the list ");
+        }
+    }
+    /**
      * Search Student by Name
      *
      * @param studentList List<Student>
@@ -98,7 +143,3 @@ public class MenuStudent {
         }
     }
 }
-
-
-
-
